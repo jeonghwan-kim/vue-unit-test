@@ -10,23 +10,34 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jasmine'],
-
+    frameworks: ['jasmine', 'fixture'],
 
     // list of files / patterns to load in the browser
     files: [
+      // 3rd party 라이브러리 
+      'node_modules/vue/dist/vue.js',
+      
+      // 픽스처
+      'src/index.html',
+
+      // 어플리케이션 코드
+      'src/js/**/*.js',
+
+      // 테스트 코드 
       'test/**/*Spec.js'
     ],
 
 
     // list of files to exclude
     exclude: [
+      'src/js/app.js',
     ],
 
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+      '**/*.html': ['html2js']
     },
 
 
@@ -64,6 +75,12 @@ module.exports = function(config) {
 
     // Concurrency level
     // how many browser should be started simultaneous
-    concurrency: Infinity
+    concurrency: Infinity,
+
+    // 콜솔 로그 켜기 
+    browserConsoleLogOptions: {
+      terminal: true,
+      level: ""
+    }
   })
 }
