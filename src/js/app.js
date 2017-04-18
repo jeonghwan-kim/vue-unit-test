@@ -1,3 +1,8 @@
 new Vue({
-  el: "#app"
+  el: "#app",
+  methods: {
+    onSearch: function(data) {
+      alert(data.query);
+    }
+  }
 });
